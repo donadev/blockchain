@@ -1,0 +1,18 @@
+{
+  "name": "blockchain",
+  "version": "0.0.1",
+  "description": "Learning project",
+  "main": "build/index.js",
+  "scripts": {
+    "tsc-watch": "tsc --watch",
+    "nodemon": "nodemon ./build/index.js"
+  },
+  "author": "Luigi Donadel",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
