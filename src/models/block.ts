@@ -1,14 +1,13 @@
 import * as sha256 from "crypto-js/sha256";
+import Transaction from "./transaction";
 export default class Block {
-    id : number
     date : Date
-    data : any
+    data : Transaction[]
     previousHash : string
     hash : string
     nonce : number = 0
 
-    constructor(id : number, date : Date, data : any, previousHash : string) {
-        this.id = id
+    constructor(date : Date, data : Transaction[], previousHash : string) {
         this.date = date
         this.data = data
         this.previousHash = previousHash
@@ -31,7 +30,7 @@ export default class Block {
     }
     generateHash() : string {
         const payload = JSON.stringify(this.data)
-        const input = `${this.id}|${this.nonce}|${this.timestamp}|${this.previousHash}|${payload}`
+        const input = `${this.nonce}|${this.timestamp}|${this.previousHash}|${payload}`
         return sha256(input).toString()
     }
 }
