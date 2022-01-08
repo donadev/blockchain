@@ -38,17 +38,22 @@ export default class Chain {
         }, 0)
     }
     add(transaction : Transaction) {
+        if(!transaction.from || !transaction.to)  {
+            throw new Error("Transaction must include from and to")
+        }
+        if(!transaction.valid) {
+            throw new Error("Transaction is not valid")
+        }
         this.pending.push(transaction)
     }
     minePending(rewardAddress : string) {
+        //adds the reward
+        this.pending.push(new Transaction(null, rewardAddress, this.miningReward))
         //NOTE: cannot store every pending transaction on a single block, need to cherry-pick some
         let block = new Block(new Date(), this.pending, this.lastBlock.hash)
         block.mine(this.difficulty)
         this.chain.push(block)
         //NOTE: need to handle lock properly on a P2P world
-        //adds the reward
-        this.pending = [
-            new Transaction(null, rewardAddress, this.miningReward)
-        ]
+        this.pending = []
     }
 }

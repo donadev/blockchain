@@ -1,26 +1,27 @@
 import Block from './models/block';
 import Chain from './models/chain';
 import Transaction from './models/transaction';
+import User from './models/user';
 
 var chain = new Chain
 
-const a = "Luigi"
-const b = "Marco"
-const c = "Daniel"
+const a = new User("Luigi")
+const b = new User("Marco")
+const c = new User("Daniel")
 
 const peers = [a, b, c]
 
-chain.add(new Transaction(a, b, 10))
-chain.add(new Transaction(b, b, 10))
-chain.add(new Transaction(c, b, 10))
-chain.add(new Transaction(b, a, 15))
+chain.add(a.move(20, b))
+chain.add(b.move(10, b))
+chain.add(c.move(10, b))
+chain.add(b.move(15, a))
 
-
-chain.minePending(a)
+a.mine(chain)
 
 
 console.log(chain)
+console.log(`Chain is valid? ${chain.valid}`)
 
 peers.forEach(peer => {
-    console.log(`Balance for ${peer}: ${chain.balanceFor(peer)}`)
+    console.log(`Balance for ${peer.name}: ${peer.balance(chain)}`)
 })

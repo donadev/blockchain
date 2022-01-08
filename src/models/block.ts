@@ -21,9 +21,12 @@ export default class Block {
             this.hash = this.generateHash()
         }
     } 
+    private get hasValidTransactions() : Boolean {
+        return this.data.every(t => t.valid)
+    }
 
     get valid() : Boolean {
-        return this.hash === this.generateHash()
+        return this.hash === this.generateHash() && this.hasValidTransactions
     }
     get timestamp() : number {
         return this.date.getTime()
