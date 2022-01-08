@@ -45,14 +45,18 @@ export default class Chain {
             throw new Error("Transaction is not valid")
         }
         this.pending.push(transaction)
+        console.log(`Transaction added to chain, waiting for miners to approve it`)
     }
     minePending(rewardAddress : string) {
         //adds the reward
         this.pending.push(new Transaction(null, rewardAddress, this.miningReward))
         //NOTE: cannot store every pending transaction on a single block, need to cherry-pick some
         let block = new Block(new Date(), this.pending, this.lastBlock.hash)
+        console.log(`\n\n${rewardAddress} has started a mining process for block:`)
+        console.log(block)
         block.mine(this.difficulty)
         this.chain.push(block)
+        console.log(`\nBlock ${block.hash} succesfully mined! Reward: ${this.miningReward}`)
         //NOTE: need to handle lock properly on a P2P world
         this.pending = []
     }

@@ -3,10 +3,10 @@ import Chain from "./chain"
 import Transaction from "./transaction"
 
 export default class User {
-    name : String
+    name : string
     keypair : KeyPair
 
-    constructor(name : String) {
+    constructor(name : string) {
         this.name = name
         this.keypair = generateKeyPair()
     }
