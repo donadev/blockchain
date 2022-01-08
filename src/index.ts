@@ -19,7 +19,7 @@ chain.add(b.move(15, a))
 
 a.mine(chain)
 
-
+console.log(chain)
 console.log(`Chain is valid? ${chain.valid}`)
 
 let balance = [] 

@@ -8,14 +8,16 @@ export default class Chain {
     chain : Block[]
 
     constructor() {
-        this.chain = [this.genesisBlock]
-        this.difficulty = 2
+        this.difficulty = 5
         this.miningReward = 100
         this.pending = []
+        this.chain = [this.genesisBlock]
     }
 
     private get genesisBlock() : Block {
-        return new Block(new Date(), [], '')
+        let output = new Block(new Date(), [], '')
+        output.mine(this.difficulty)
+        return output
     }
 
     private get lastBlock() : Block {
@@ -26,7 +28,7 @@ export default class Chain {
         return this.chain.every((current, i, chain) => {
             if(i == 0) return current.valid
             const previous = chain[i - 1]
-            return current.valid && previous.hash === current.previousHash
+            return current.valid(this.difficulty) && previous.hash === current.previousHash
         })
     }
     balanceFor(address : String) : number {

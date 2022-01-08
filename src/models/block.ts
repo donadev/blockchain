@@ -14,9 +14,12 @@ export default class Block {
         this.hash = this.generateHash()
     }
 
-    mine(difficulty) {
+    private hashValid(hash : string, difficulty : number) : Boolean {
         const target = Array(difficulty + 1).join("0")
-        while(this.hash.substring(0, difficulty) !== target) {
+        return hash.substring(0, difficulty) === target
+    }
+    mine(difficulty) {
+        while(!this.hashValid(this.hash, difficulty)) {
             this.nonce += 1
             this.hash = this.generateHash()
         }
@@ -25,8 +28,8 @@ export default class Block {
         return this.transactions.every(t => t.valid)
     }
 
-    get valid() : Boolean {
-        return this.hash === this.generateHash() && this.hasValidTransactions
+    valid(difficulty : number) : Boolean {
+        return this.hashValid(this.hash, difficulty) && this.hash === this.generateHash() && this.hasValidTransactions
     }
     get timestamp() : number {
         return this.date.getTime()
