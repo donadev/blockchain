@@ -1,7 +1,7 @@
 import Block from './models/block';
 import Chain from './models/chain';
 
-var chain = new Chain
+var chain = new Chain(5)
 
 chain.add({amount: 3})
 chain.add({amount: 5})

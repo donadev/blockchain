@@ -1,10 +1,12 @@
 import Block from "./block";
 
 export default class Chain {
+    difficulty : number
     chain : Block[]
 
-    constructor() {
+    constructor(difficulty: number) {
         this.chain = [this.genesisBlock]
+        this.difficulty = difficulty
     }
 
     private get genesisBlock() : Block {
@@ -28,6 +30,7 @@ export default class Chain {
         const previousHash = last.hash
         const date = new Date()
         let block = new Block(id, date, data, previousHash)
+        block.mine(this.difficulty)
         this.chain.push(block)
     }
 }

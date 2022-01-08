@@ -5,6 +5,7 @@ export default class Block {
     data : any
     previousHash : string
     hash : string
+    nonce : number = 0
 
     constructor(id : number, date : Date, data : any, previousHash : string) {
         this.id = id
@@ -14,6 +15,14 @@ export default class Block {
         this.hash = this.generateHash()
     }
 
+    mine(difficulty) {
+        const target = Array(difficulty + 1).join("0")
+        while(this.hash.substring(0, difficulty) !== target) {
+            this.nonce += 1
+            this.hash = this.generateHash()
+        }
+    } 
+
     get valid() : Boolean {
         return this.hash === this.generateHash()
     }
@@ -22,7 +31,7 @@ export default class Block {
     }
     generateHash() : string {
         const payload = JSON.stringify(this.data)
-        const input = `${this.id}|${this.timestamp}|${this.previousHash}|${payload}`
+        const input = `${this.id}|${this.nonce}|${this.timestamp}|${this.previousHash}|${payload}`
         return sha256(input).toString()
     }
 }
