@@ -1,15 +1,17 @@
 import * as sha256 from "crypto-js/sha256";
 export default class Block {
-    private id : number
-    private date : Date
-    private data : any
-    private previousHash : string
+    id : number
+    date : Date
+    data : any
+    previousHash : string
+    hash : string
 
-    constructor(id : number, date : Date, data : any) {
+    constructor(id : number, date : Date, data : any, previousHash : string) {
         this.id = id
         this.date = date
         this.data = data
-        this.previousHash = this.generateHash()
+        this.previousHash = previousHash
+        this.hash = this.generateHash()
     }
 
     get timestamp() : number {

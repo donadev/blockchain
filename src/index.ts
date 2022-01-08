@@ -1,5 +1,11 @@
 import Block from './models/block';
+import Chain from './models/chain';
 
-var block = new Block(0, new Date(), {amount: 2})
+var chain = new Chain
 
-console.log(block)
+chain.add({amount: 3})
+chain.add({amount: 5})
+chain.add({amount: 6})
+chain.add({amount: 18})
+
+console.log(chain)
