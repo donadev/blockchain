@@ -24,7 +24,7 @@ console.log(`Chain is valid? ${chain.valid}`)
 
 let balance = [] 
 peers.forEach(user => {
-    balance[user.name] = user.balance(chain)
+    balance[user.name] = {wallet: user.walletAddress, balance: user.balance(chain)}
 })
-console.log("Balance:")
+console.log("Output:")
 console.log(balance)
