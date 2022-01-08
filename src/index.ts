@@ -1,6 +1,5 @@
 import Block from './models/block';
 import Chain from './models/chain';
-import Transaction from './models/transaction';
 import User from './models/user';
 
 var chain = new Chain

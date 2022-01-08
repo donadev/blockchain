@@ -2,14 +2,14 @@ import * as sha256 from "crypto-js/sha256";
 import Transaction from "./transaction";
 export default class Block {
     date : Date
-    data : Transaction[]
+    transactions : Transaction[]
     previousHash : string
     hash : string
     nonce : number = 0
 
-    constructor(date : Date, data : Transaction[], previousHash : string) {
+    constructor(date : Date, transactions : Transaction[], previousHash : string) {
         this.date = date
-        this.data = data
+        this.transactions = transactions
         this.previousHash = previousHash
         this.hash = this.generateHash()
     }
@@ -22,7 +22,7 @@ export default class Block {
         }
     } 
     private get hasValidTransactions() : Boolean {
-        return this.data.every(t => t.valid)
+        return this.transactions.every(t => t.valid)
     }
 
     get valid() : Boolean {
@@ -32,7 +32,7 @@ export default class Block {
         return this.date.getTime()
     }
     generateHash() : string {
-        const payload = JSON.stringify(this.data)
+        const payload = JSON.stringify(this.transactions)
         const input = `${this.nonce}|${this.timestamp}|${this.previousHash}|${payload}`
         return sha256(input).toString()
     }

@@ -30,7 +30,7 @@ export default class Chain {
         })
     }
     balanceFor(address : String) : number {
-        return this.chain.flatMap(b => b.data).reduce((acc, val) => {
+        return this.chain.flatMap(b => b.transactions).reduce((acc, val) => {
             var increment = 0
             if(val.from === address) increment -= val.amount
             if(val.to === address) increment += val.amount
