@@ -7,9 +7,9 @@ export default class TransactionBag {
     pending : Transaction[]
     miningReward : number
 
-    constructor() {
+    constructor(pending : Transaction[] = []) {
         this.miningReward = 100
-        this.pending = []
+        this.pending = pending || []
     }
 
     minePending(rewardAddress : string, chain : Chain) {
