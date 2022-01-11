@@ -3,15 +3,11 @@ import Transaction from "./transaction";
 
 export default class Chain {
     difficulty : number
-    miningReward : number
-    pending : Transaction[]
     chain : Block[]
 
-    constructor() {
+    constructor(blocks : Block[] = []) {
         this.difficulty = 5
-        this.miningReward = 100
-        this.pending = []
-        this.chain = [this.genesisBlock]
+        this.chain = blocks || [this.genesisBlock]
     }
 
     private get genesisBlock() : Block {
@@ -20,7 +16,7 @@ export default class Chain {
         return output
     }
 
-    private get lastBlock() : Block {
+    get lastBlock() : Block {
         return this.chain[this.chain.length - 1]
     }
 
@@ -39,27 +35,8 @@ export default class Chain {
             return acc + increment
         }, 0)
     }
-    add(transaction : Transaction) {
-        if(!transaction.from || !transaction.to)  {
-            throw new Error("Transaction must include from and to")
-        }
-        if(!transaction.valid) {
-            throw new Error("Transaction is not valid")
-        }
-        this.pending.push(transaction)
-        console.log(`Transaction added to chain, waiting for miners to approve it`)
-    }
-    minePending(rewardAddress : string) {
-        //adds the reward
-        this.pending.push(new Transaction(null, rewardAddress, this.miningReward))
-        //NOTE: cannot store every pending transaction on a single block, need to cherry-pick some
-        let block = new Block(new Date(), this.pending, this.lastBlock.hash)
-        console.log(`\n\n${rewardAddress} has started a mining process for block:`)
-        console.log(block)
-        block.mine(this.difficulty)
+    push(block : Block) {
         this.chain.push(block)
-        console.log(`\nBlock ${block.hash} succesfully mined! Reward: ${this.miningReward}`)
-        //NOTE: need to handle lock properly on a P2P world
-        this.pending = []
     }
+    
 }

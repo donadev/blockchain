@@ -1,6 +1,7 @@
 import { generateKeyPair, KeyPair } from "../services/keys"
 import Chain from "./chain"
 import Transaction from "./transaction"
+import TransactionBag from "./transaction_bag"
 
 export default class User {
     name : string
@@ -20,8 +21,8 @@ export default class User {
         output.sign(this.keypair)
         return output
     }
-    mine(chain : Chain) {
-        chain.minePending(this.walletAddress)
+    mine(chain : Chain, bag : TransactionBag) {
+        bag.minePending(this.walletAddress, chain)
     }
 
     get walletAddress() : string {

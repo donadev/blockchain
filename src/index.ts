@@ -1,8 +1,10 @@
 import Block from './models/block';
 import Chain from './models/chain';
 import User from './models/user';
+import TransactionBag from './models/transaction_bag';
 
 var chain = new Chain
+var pending = new TransactionBag
 
 const a = new User("Luigi")
 const b = new User("Marco")
@@ -12,12 +14,12 @@ const peers = [a, b, c]
 
 console.log(`Users ${peers.map(p => p.name).join(", ")}`)
 
-chain.add(a.move(20, b))
-chain.add(b.move(10, b))
-chain.add(c.move(10, b))
-chain.add(b.move(15, a))
+pending.add(a.move(20, b))
+pending.add(b.move(10, b))
+pending.add(c.move(10, b))
+pending.add(b.move(15, a))
 
-a.mine(chain)
+a.mine(chain, pending)
 
 console.log(chain)
 console.log(`Chain is valid? ${chain.valid}`)
