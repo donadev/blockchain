@@ -41,8 +41,8 @@
     <!--<a href="https://github.com/donadev/blockchain"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/donadev/blockchain">View Demo</a>-->
-    ·
+    <a href="https://github.com/donadev/blockchain">View Demo</a>
+    ·-->
     <a href="https://github.com/donadev/blockchain/issues">Report Bug</a>
     ·
     <a href="https://github.com/donadev/blockchain/issues">Request Feature</a>
