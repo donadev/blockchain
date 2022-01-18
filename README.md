@@ -129,7 +129,7 @@ Install the [Node Package Manager](https://www.npmjs.com/)
    npm run tsc-watch
    ```
    
-4. Run the deamon
+4. Run the daemon
    ```sh
    npm run nodemon
    ```
