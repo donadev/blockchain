@@ -148,12 +148,12 @@ TBD
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Implement first draft
+- [✅] Implement first draft
+- [] Distributed storage
 - [] Enhance security
     - [] Prevent Double spending problem
     - [] Prevent Double earning problem for miners
     - [] Check balance before adding transaction
-- [] Distributed storage
 - [] Implement web frontend
 - [] Create hashing model for the block
 - [] More soon
