@@ -29,19 +29,19 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/donadev/blockchain">
+  <!--<a href="https://github.com/donadev/blockchain">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a>-->
 
 <h3 align="center">Blockchain</h3>
 
   <p align="center">
     This simple project is useful for me to learning the concepts behind blockchains. A simple blockchain implementation.
     <br />
-    <a href="https://github.com/donadev/blockchain"><strong>Explore the docs »</strong></a>
+    <!--<a href="https://github.com/donadev/blockchain"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/donadev/blockchain">View Demo</a>
+    <a href="https://github.com/donadev/blockchain">View Demo</a>-->
     ·
     <a href="https://github.com/donadev/blockchain/issues">Report Bug</a>
     ·
