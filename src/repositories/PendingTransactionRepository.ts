@@ -6,7 +6,13 @@ export default class PendingTransactionRepository {
     private REPO_NAME = "/orbitdb/zdpuArSoWRfHpbqSSQCEVkonNnGGjfwhZ9f1yjboxLTpJfcdv/Miner Blocks"
     private dbManager = new DatabaseService<Transaction>(this.REPO_NAME, DatabaseType.feed)
 
-    init = async () => {
+    static create = async () : Promise<PendingTransactionRepository> => {
+        let instance = new PendingTransactionRepository
+        await instance.init()
+        return instance
+    }
+
+    private init = async () => {
         await this.dbManager.connect()
     }
     getPendingTransactions = async () : Promise<TransactionBag> => {

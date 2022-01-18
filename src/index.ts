@@ -6,10 +6,8 @@ import ChainRepository from './repositories/ChainRepository';
 import PendingTransactionRepository from './repositories/PendingTransactionRepository';
 
 const execute = async () => {
-    const chainRepo = new ChainRepository
-    chainRepo.init()
-    const mineRepo = new PendingTransactionRepository
-    mineRepo.init()
+    const chainRepo = await ChainRepository.create()
+    const mineRepo = await PendingTransactionRepository.create()
     var chain = await chainRepo.getChain() || new Chain
     var pending = await mineRepo.getPendingTransactions() || new TransactionBag
 
