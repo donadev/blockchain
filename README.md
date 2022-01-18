@@ -83,7 +83,9 @@
 ## About The Project
 
 
-This starts as a learning project with no big ambitions, but to be fun and useful for myself to learn blockchains and decentralized world. Some features will be added in the near future.
+This starts as a learning project with no big ambitions, but to be fun and useful for myself to learn blockchains and decentralized world. 
+
+The project is in WIP state, some features will be added in the near future.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -102,12 +104,11 @@ This starts as a learning project with no big ambitions, but to be fun and usefu
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Install the blockchain software following the steps listed below.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Install the [Node Package Manager](https://www.npmjs.com/)
 * npm
   ```sh
   npm install npm@latest -g
@@ -115,18 +116,22 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/donadev/blockchain.git
    ```
 3. Install NPM packages
    ```sh
-   npm install
+   npm i
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Start automatic compilation
+   ```sh
+   npm run tsc-watch
+   ```
+   
+4. Run the deamon
+   ```sh
+   npm run nodemon
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -136,11 +141,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+TBD
 
 
 
