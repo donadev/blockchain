@@ -9,9 +9,9 @@ import DatabaseService from './services/db';
 const execute = async () => {
     const ipfs = await DatabaseService.createIPFS()
     const chainRepo = await ChainRepository.create(ipfs)
-    const mineRepo = await PendingTransactionRepository.create(ipfs)
+    //const mineRepo = await PendingTransactionRepository.create(ipfs)
     var chain = await chainRepo.getChain() || new Chain
-    var pending = await mineRepo.getPendingTransactions() || new TransactionBag
+    var pending = new TransactionBag()//await mineRepo.getPendingTransactions() || new TransactionBag
     const a = new User("Luigi")
     const b = new User("Marco")
     const c = new User("Daniel")
