@@ -6,14 +6,15 @@ export default class ChainRepository {
     private REPO_NAME = "/orbitdb/zdpuB2X7KnVjbjjwycKx46Gj9QwJ5P1L46vxgxBCVVxemaoFn/BlockChain"
     private dbManager = new DatabaseService<Block>(this.REPO_NAME, DatabaseType.log)
 
-    static create = async () : Promise<ChainRepository> => {
+    static create = async (ipfs: any) : Promise<ChainRepository> => {
         let instance = new ChainRepository
-        await instance.init()
+        await instance.init(ipfs)
         return instance
     }
 
-    private init = async () => {
-        await this.dbManager.connect()
+    
+    private init = async (ipfs : any) => {
+        await this.dbManager.connect(ipfs)
     }
     getChain = async () : Promise<Chain> => {
         const blocks = await this.dbManager.collect()

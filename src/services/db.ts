@@ -1,4 +1,4 @@
-const IPFS = require('ipfs')
+const IPFS = require('ipfs-core')
 const OrbitDB = require('orbit-db')
 
 export enum DatabaseType { log, feed }
@@ -20,9 +20,11 @@ export default class DatabaseService<Item> {
         }
     }
 
-    connect = async () => {
-        const ipfsOptions = { repo : "./ipfs", }
-        const ipfs = await IPFS.create(ipfsOptions)
+    static createIPFS = async () => {
+        return await IPFS.create({repo: `ipfs`})
+    }
+
+    connect = async (ipfs : any) => {
         const orbitdb =  await OrbitDB.createInstance(ipfs)
         this.db = await this.get(orbitdb)
     }

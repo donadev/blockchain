@@ -6,14 +6,14 @@ export default class PendingTransactionRepository {
     private REPO_NAME = "/orbitdb/zdpuArSoWRfHpbqSSQCEVkonNnGGjfwhZ9f1yjboxLTpJfcdv/Miner Blocks"
     private dbManager = new DatabaseService<Transaction>(this.REPO_NAME, DatabaseType.feed)
 
-    static create = async () : Promise<PendingTransactionRepository> => {
+    static create = async (ipfs : any) : Promise<PendingTransactionRepository> => {
         let instance = new PendingTransactionRepository
-        await instance.init()
+        await instance.init(ipfs)
         return instance
     }
 
-    private init = async () => {
-        await this.dbManager.connect()
+    private init = async (ipfs : any) => {
+        await this.dbManager.connect(ipfs)
     }
     getPendingTransactions = async () : Promise<TransactionBag> => {
         const transactions = await this.dbManager.collect()
@@ -27,6 +27,7 @@ export default class PendingTransactionRepository {
         return await this.dbManager.add(transaction)
     }
     remove = async (transaction : Transaction) => {
+        //TODO: identify transaction by its id
         return await this.dbManager.remove("transaction")
     }
 }
