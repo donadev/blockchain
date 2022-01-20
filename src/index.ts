@@ -4,13 +4,14 @@ import User from './models/user';
 import TransactionBag from './models/transaction_bag';
 import ChainRepository from './repositories/ChainRepository';
 import PendingTransactionRepository from './repositories/PendingTransactionRepository';
+import DatabaseService from './services/db';
 
 const execute = async () => {
-    const chainRepo = await ChainRepository.create()
-    const mineRepo = await PendingTransactionRepository.create()
+    const ipfs = await DatabaseService.createIPFS()
+    const chainRepo = await ChainRepository.create(ipfs)
+    const mineRepo = await PendingTransactionRepository.create(ipfs)
     var chain = await chainRepo.getChain() || new Chain
     var pending = await mineRepo.getPendingTransactions() || new TransactionBag
-
     const a = new User("Luigi")
     const b = new User("Marco")
     const c = new User("Daniel")

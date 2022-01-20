@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2019",
-    "lib": ["es2019", "dom"],
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
     "module": "commonjs",
     "outDir": "build",
-    "sourceMap": true
+    "sourceMap": true,
+    "esModuleInterop": true
   },
   "include": [
     "./src/**/*.ts"

@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "tsc-watch": "tsc --watch",
-    "nodemon": "nodemon ./build/index.js"
+    "start": "node ./build/index.js"
   },
   "author": "Luigi Donadel",
   "license": "ISC",
@@ -16,7 +16,7 @@
     "@types/elliptic": "^6.4.14",
     "crypto-js": "^4.1.1",
     "elliptic": "^6.5.4",
-    "ipfs": "^0.61.0",
+    "ipfs-core": "^0.13.0",
     "orbit-db": "^0.28.0"
   }
 }
