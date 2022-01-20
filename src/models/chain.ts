@@ -7,7 +7,11 @@ export default class Chain {
 
     constructor(blocks : Block[] = []) {
         this.difficulty = 5
-        this.chain = blocks || [this.genesisBlock]
+        if(blocks.length == 0) {
+            this.chain = [this.genesisBlock]
+        } else {
+            this.chain = blocks
+        }
     }
 
     private get genesisBlock() : Block {
