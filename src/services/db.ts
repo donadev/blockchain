@@ -1,19 +1,19 @@
-import * as OrbitDB from 'orbit-db'
-import * as IPFS from 'ipfs'
+const IPFS = require('ipfs')
+const OrbitDB = require('orbit-db')
 
 export enum DatabaseType { log, feed }
 export default class DatabaseService<Item> {
 
     private name : string
     private type : DatabaseType
-    private db : OrbitDB
+    private db : any
     
     constructor(name : string, type : DatabaseType) {
         this.name = name
         this.type = type
     }
 
-    private get = async(orbit : OrbitDB) : OrbitDB => {
+    private get = async(orbit : any) : Promise<any> => {
         switch(this.type) {
             case DatabaseType.feed: return orbit.feed(this.name)
             case DatabaseType.log: return orbit.log(this.name)
