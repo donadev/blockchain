@@ -1,4 +1,4 @@
-import * as sha256 from "crypto-js/sha256";
+import sha256 from 'crypto-js/sha256'
 import { KeyPair, keyFromPublic } from "../services/keys";
 
 export default class Transaction {

@@ -1,4 +1,4 @@
-import * as sha256 from "crypto-js/sha256";
+import sha256 from 'crypto-js/sha256'
 import Transaction from "./transaction";
 export default class Block {
     date : Date
