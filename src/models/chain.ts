@@ -22,9 +22,10 @@ export default class Chain {
 
     get valid() : Boolean {
         return this.chain.every((current, i, chain) => {
-            if(i == 0) return current.valid
+            const valid = current.valid(this.difficulty)
+            if(i == 0) return valid
             const previous = chain[i - 1]
-            return current.valid(this.difficulty) && previous.hash === current.previousHash
+            return valid && previous.hash === current.previousHash
         })
     }
     balanceFor(address : String) : number {
